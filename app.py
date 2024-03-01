@@ -5,7 +5,10 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = ''
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:mypassword@localhost/contactsdb'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
+                       
+SQLAlchemy(app)
 #Para poder realizar la conexión le pasamos lo indicado y después los datos de conexión.
 
 app.register_blueprint(contacts) #Usamos el register para imprimir los contactos.

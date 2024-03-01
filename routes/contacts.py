@@ -1,4 +1,4 @@
-from  flask import Blueprint, render_template
+from  flask import Blueprint, render_template, request
 #Blueprint permite el uso de decoradores (variables para trabajar), el render_template asignar html
 #Todas estas rutas funcionan por un método get y post
 contacts = Blueprint('contacts',__name__)
@@ -8,9 +8,14 @@ contacts = Blueprint('contacts',__name__)
 def home():
     return render_template("index.html")#Le pasamos este template
 
-@contacts.route('/new')
+
+@contacts.route('/new',methods=['POST'])
 def add_contact():
+    print(request.form['fullname'])
+    print(request.form['email'])
+    print(request.form['phone'])
     return "Guardando un contacto"
+
 
 @contacts.route('/update')
 def update():
